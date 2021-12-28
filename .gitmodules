@@ -1,3 +1,6 @@
 [submodule "wrapped_bin_mult"]
 	path = wrapped_bin_mult
 	url = git@github.com:tucanae47/wrapped_bin_mult.git
+[submodule "bin_mult"]
+	path = bin_mult
+	url = git@github.com:tucanae47/bin_mult.git
