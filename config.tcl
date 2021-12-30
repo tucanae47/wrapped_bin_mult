@@ -18,14 +18,14 @@ set ::env(PL_TARGET_DENSITY) 0.4
 set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 
 # set absolute size of the die to 300 x 300 um
-set ::env(DIE_AREA) "0 0 300 300"
+set ::env(DIE_AREA) "0 0 220 220"
 set ::env(FP_SIZING) absolute
 
 # define number of IO pads
 set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
 
 # clock period is ns
-set ::env(CLOCK_PERIOD) "10"
+set ::env(CLOCK_PERIOD) "20"
 set ::env(CLOCK_PORT) "wb_clk_i"
 
 # macro needs to work inside Caravel, so can't be core and can't use metal 5
@@ -39,6 +39,6 @@ set ::env(GND_NETS) [list {vssd1}]
 # turn off CVC as we have multiple power domains
 set ::env(RUN_CVC) 0
 
-# make pins wider to solve routing issues
-set ::env(FP_IO_VTHICKNESS_MULT) 4
-set ::env(FP_IO_HTHICKNESS_MULT) 4
+# # make pins wider to solve routing issues
+# set ::env(FP_IO_VTHICKNESS_MULT) 4
+# set ::env(FP_IO_HTHICKNESS_MULT) 4
