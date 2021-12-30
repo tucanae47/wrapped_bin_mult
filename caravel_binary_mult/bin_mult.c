@@ -86,11 +86,7 @@ void main()
     reg_la0_data &= ~(1 << SRAM_WRITE_PORT); 
 
     // load the function data into sram
-    uint8_t i = 0;
-    for(i = 0; i < 4; i ++)
-    {
-        write_to_ram(i, 4*i + ((4*i+1) << 8) + ((4*i+2) << 16) + ((4*i+3) << 24));
-    }
+ 
 
     // read 1 address back just to check
     // read_from_ram(0);
