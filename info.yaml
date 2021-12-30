@@ -1,21 +1,21 @@
 --- 
 # information
 project: 
-  title: "title"
+  title: "7 bit xnor popcount array multiplication"
   description: "description"
   picture: docs/empty.png
-  author: "Author"
+  author: "Camilo Soto"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
-interfaces: ['la1', 'gpio']
+interfaces: ['la1', 'gpio', 'wishbone']
 
 # test within caravel
 caravel_test:
   recipe: "coco_test"
   directory: "caravel_test"
   id: 1
-  module_name: "wrapped_project"
+  module_name: "wrapped_bin_mult"
 
 # module test
 module_test:
@@ -35,11 +35,14 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - function_generator/src/generator.v
+    - function_generator/src/xnor7.v
+    - function_generator/src/bin_mult.v
+    - function_generator/src/top_bin.v
 
 # gds - check nothing on metal 5, DRC & LVS
 gds:
   directory: "gds"
-  gds_filename: "project.gds"
-  lvs_filename: "project.lvs.powered.v"
-  lef_filename: "project.lef"
+  gds_filename: "wrapped_bin_mult.gds"
+  lvs_filename: "wrapped_bin_mult.lvs.powered.v"
+  lef_filename: "wrapped_bin_mult.lef"

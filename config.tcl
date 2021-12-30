@@ -2,11 +2,14 @@
 set script_dir [file dirname [file normalize [info script]]]
 
 # name of your project, should also match the name of the top module
-set ::env(DESIGN_NAME) project_name
+set ::env(DESIGN_NAME) wrapped_bin_mult
 
 # add your source files here
 set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
-    $::env(DESIGN_DIR)/other source files.v"
+    $::env(DESIGN_DIR)/bin_mult/src/wb_top_bin_mult.v \
+    $::env(DESIGN_DIR)/bin_mult/src/top_bin_mult.v \
+    $::env(DESIGN_DIR)/bin_mult/src/bin_mult.v \
+    $::env(DESIGN_DIR)/bin_mult/src/xnor7.v"
 
 # target density, change this if you can't get your design to fit
 set ::env(PL_TARGET_DENSITY) 0.4

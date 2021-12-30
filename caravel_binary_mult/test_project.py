@@ -31,6 +31,6 @@ async def test_start(dut):
     # wait
     await ClockCycles(dut.clk, 6000)
 
-    # assert something
-    assert(0 == 25)
+    # missing this assert from here assert something
+    # assert(0 == 25)
 
