@@ -26,10 +26,11 @@ async def test_start(dut):
     dut.RSTB <= 1
 
     # wait with a timeout for the project to become active
-    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_bin_mult_7.active), 180, 'us')
+    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_bin_mult_7.active), 200, 'us')
+    # await with_timeout(RisingEdge(dut.dbg_active), 200, 'us')
 
     # wait
-    await ClockCycles(dut.clk, 6000)
+    await ClockCycles(dut.clk, 30)
 
     # missing this assert from here assert something
     # assert(0 == 25)

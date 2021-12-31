@@ -20,29 +20,15 @@
 #define PROJECT_ID 7
 
 #define REG_CONFIG_HIGH          (*(volatile uint32_t*)0x30000000)
-#define SRAM_BASE_ADDR      0x30FFFC00
+// #define REG      0x30FFFC00
 
 #define REG_CONFIG_LOW          (*(volatile uint32_t*)0x30000001)
 
-#define OPENRAM(addr)       (*(uint32_t*)(SRAM_BASE_ADDR + (addr & 0x3fc)))
+// #define OPENRAM(addr)       (*(uint32_t*)(SRAM_BASE_ADDR + (addr & 0x3fc)))
 
-#define WBRAM(addr)       (*(uint32_t*)(SRAM_BASE_ADDR ))
-#define SRAM_WRITE_PORT 31  // last bit of the 1st bank logic analyser. If set high, Caravel can write to shared RAM
+// #define WBRAM(addr)       (*(uint32_t*)(SRAM_BASE_ADDR ))
 
-// void config_generator(uint16_t period, uint8_t end_addr, bool run)
-// {
-//     REG_CONFIG = (run << 24) + (end_addr << 16) + period;
-// }
 
-void write_to_ram(uint8_t addr, uint32_t data)
-{
-    OPENRAM(addr << 2) = data;
-}
-
-uint32_t read_from_ram(uint8_t addr)
-{
-    return OPENRAM(addr << 2);
-}
 
 void main()
 {
@@ -83,7 +69,7 @@ void main()
     reg_la0_oenb = 0; // output enable on
 
     // allow Caravel to write to the shared RAM
-    reg_la0_data &= ~(1 << SRAM_WRITE_PORT); 
+    // reg_la0_data &= ~(1 << SRAM_WRITE_PORT); 
 
     // load the function data into sram
  
@@ -95,7 +81,7 @@ void main()
     uint32_t mem_img_high = 0x0C3E1A00;
     uint32_t mem_img_low = 0x061BB76D;
 
-    // configure function generator: 10 clock cycles per sample, 64 * 4 samples, start run
+    // set wishbone data 
     REG_CONFIG_LOW = mem_img_low;
     REG_CONFIG_HIGH = mem_img_high;
 
