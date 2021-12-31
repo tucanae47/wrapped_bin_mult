@@ -5,10 +5,13 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v bin_mult.v top_bin_mult.v wb_top_bin_mult.v
+read -formal wrapper.v  top_bin_mult.v wb_top_bin_mult.v xnor7.v bin_mult.v
 prep -top wrapped_bin_mult
 
 [files]
 wrapper.v
 properties.v
 bin_mult/src/wb_top_bin_mult.v
+bin_mult/src/bin_mult.v
+bin_mult/src/top_bin_mult.v
+bin_mult/src/xnor7.v
