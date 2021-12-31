@@ -42,7 +42,7 @@ export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
 
 .SUFFIXES:
 
-PATTERN = project
+PATTERN = bin_mult
 
 all:  coco_test
 
@@ -51,7 +51,7 @@ hex:  ${PATTERN:=.hex}
 coco_test: ${PATTERN}.hex
 	rm -rf sim_build/
 	mkdir sim_build/
-	iverilog -o sim_build/sim.vvp -s project_tb project_tb.v -DSIM -DFUNCTIONAL \
+	iverilog -o sim_build/sim.vvp -s bin_mult_tb bin_mult_tb.v -DSIM -DFUNCTIONAL \
 	-I $(PDK_PATH) \
 	-I $(CARAVEL_BEHAVIOURAL_MODELS) -I $(CARAVEL_RTL_PATH) \
 	-I $(UPRJ_BEHAVIOURAL_MODELS)    -I $(UPRJ_RTL_PATH)
