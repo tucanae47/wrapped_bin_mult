@@ -30,7 +30,7 @@ async def test_start(dut):
     await with_timeout(RisingEdge(dut.dbg_active), 200, 'us')
 
     # wait
-    await ClockCycles(dut.clk, 30)
+    await ClockCycles(dut.clk, 2400)
 
     # missing this assert from here assert something
     # assert(0 == 25)

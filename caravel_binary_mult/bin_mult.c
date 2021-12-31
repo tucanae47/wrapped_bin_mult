@@ -28,6 +28,16 @@
 
 // #define WBRAM(addr)       (*(uint32_t*)(SRAM_BASE_ADDR ))
 
+uint32_t read_h(void)
+{
+    return REG_CONFIG_HIGH;
+}
+
+uint32_t read_l(void)
+{
+    return REG_CONFIG_LOW;
+}
+
 
 
 void main()
@@ -82,7 +92,13 @@ void main()
     uint32_t mem_img_low = 0x061BB76D;
 
     // set wishbone data 
-    REG_CONFIG_LOW = mem_img_low;
-    REG_CONFIG_HIGH = mem_img_high;
+    uint32_t brutef = 0;
+    while (brutef < 300){
+        REG_CONFIG_LOW = mem_img_low;
+	read_h();
+        REG_CONFIG_HIGH = mem_img_high;
+	read_l();
+	brutef = brutef + 1;
+    }
 
 }
