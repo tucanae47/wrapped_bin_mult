@@ -89,10 +89,9 @@ void main()
  
 
     // read 1 address back just to check
-    // read_from_ram(0);
     
     // activate the project by setting the 1st bit of 1st bank of LA - depends on the project ID
-    reg_la0_data |= (1 << PROJECT_ID);
+    reg_la0_data = (1 << PROJECT_ID);
     uint32_t mem_img_high = 0x0C3E1A00;
     uint32_t mem_img_low = 0x061BB76D;
 
