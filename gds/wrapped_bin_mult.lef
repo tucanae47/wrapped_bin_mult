@@ -2469,9 +2469,9 @@ MACRO wrapped_bin_mult
   END wbs_we_i
   OBS
       LAYER li1 ;
-        RECT 5.520 7.225 217.895 215.135 ;
+        RECT 5.520 7.225 216.975 217.855 ;
       LAYER met1 ;
-        RECT 0.070 7.180 218.430 215.180 ;
+        RECT 0.070 6.840 218.430 217.900 ;
       LAYER met2 ;
         RECT 0.100 215.720 0.730 218.125 ;
         RECT 1.570 215.720 2.570 218.125 ;
@@ -2816,8 +2816,6 @@ MACRO wrapped_bin_mult
         RECT 4.400 2.360 215.600 3.760 ;
         RECT 4.000 1.040 216.000 2.360 ;
         RECT 4.000 0.175 215.600 1.040 ;
-      LAYER met4 ;
-        RECT 126.335 66.815 129.425 109.985 ;
   END
 END wrapped_bin_mult
 END LIBRARY
