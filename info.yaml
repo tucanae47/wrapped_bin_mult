@@ -3,8 +3,8 @@
 project: 
   title: "7 bit xnor popcount array multiplication"
   description: "description"
-  picture: docs/empty.png
-  author: "Camilo Soto"
+  picture: docs/bin_mult_design.png
+  author: "tucanae47"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
@@ -14,13 +14,13 @@ interfaces: ['la1', 'gpio', 'wishbone']
 caravel_test:
   recipe: "coco_test"
   directory: "caravel_test"
-  id: 1
-  module_name: "wrapped_bin_mult"
+  id: 7
+  module_name:  "wrapped_bin_mult"
 
 # module test
 module_test:
   recipe: "all" 
-  directory: "project directory"
+  directory: "bin_mult"
   makefile: "Makefile"
 
 # run the wrapper formal proof
@@ -35,10 +35,10 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - function_generator/src/generator.v
-    - function_generator/src/xnor7.v
-    - function_generator/src/bin_mult.v
-    - function_generator/src/top_bin.v
+    - bin_mult/src/wb_top_bin_mult.v
+    - bin_mult/src/xnor7.v
+    - bin_mult/src/bin_mult.v
+    - bin_mult/src/top_bin_mult.v
 
 # gds - check nothing on metal 5, DRC & LVS
 gds:

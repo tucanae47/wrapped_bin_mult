@@ -147,19 +147,14 @@ module wrapped_bin_mult(
     // permanently set oeb so that outputs are always enabled: 0 is output, 1 is high-impedance
     assign buf_io_oeb = {`MPRJ_IO_PADS{1'b0}};
 
-    // local signal for rambus address
-    wire [7:0] rambus_wb_adr;
-
-    // RAMBus is 10 bit and word aligned
-    assign buf_rambus_wb_adr_o = {rambus_wb_adr, 2'b00};
-
+   
     // debug active signal
     assign buf_io_out[21] = active;
 
     // Instantiate your module here, 
     // connecting what you need of the above signals. 
     // Use the buffered outputs for your module's outputs.
-    wb_top_bin_mult #(.BASE_ADDRESS(32'h3000_0000)) generator ( 
+    wb_top_bin_mult #(.BASE_ADDRESS(32'h3000_0000)) bin_mult ( 
         // CaravelBus peripheral ports
         .caravel_wb_clk_i   (wb_clk_i ),
         .caravel_wb_rst_i   (wb_rst_i | !active),
@@ -173,7 +168,7 @@ module wrapped_bin_mult(
         .caravel_wb_dat_o   (buf_wbs_dat_o),
 
         // DAC
-        .be_out             (buf_io_out[15:8]),
+        .be_out             (buf_io_out[14:8]),
 
         // debug
         .dbg_caravel_wb_stb (buf_io_out[20])
